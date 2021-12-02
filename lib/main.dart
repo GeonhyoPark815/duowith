@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'screens/splashScreen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         /// 테마 속성을 'indigo'로 설정
         /// Material Colors 중에 지정
         /// https://points.tistory.com/65
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: const TextTheme(
           subtitle1: TextStyle(

@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../forFirebase.dart';
+import 'mainPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 4),
       () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ForFirebase()),
+        // 원래는 로그인 화면을 위한 ForFireBase()로 이동
+        MaterialPageRoute(builder: (context) => MainPage()),
       ),
     );
   }
@@ -35,26 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           /// Splash Screen을 구성할 이미지를 저장해주세요.
-            image: AssetImage('images/splash.jpg'), fit: BoxFit.contain),
-      ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            top: 0.0,
-            left: 0.0,
-            child: Container(
-              width: width,
-              height: height,
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Center(),
-                ),
-              ),
-            ),
-          ),
-        ],
+            image: AssetImage('images/splash.jpg'), fit: BoxFit.cover),
       ),
     );
   }

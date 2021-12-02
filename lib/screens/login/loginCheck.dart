@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../mainPage.dart';
-import 'login.dart';
+import 'loginScreen.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class LoginCheck extends StatelessWidget {
+  const LoginCheck({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,9 @@ class Home extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.data == null) {
-            return Login();
-          } else {
+            return LoginScreen();
+          }
+          else {
             return MainPage();
           }
         },

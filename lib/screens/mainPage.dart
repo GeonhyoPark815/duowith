@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'home.dart';
+import 'package:small_talk/database/post.dart';
+
+import 'login/loginScreen.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -11,50 +15,23 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
+  late BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
+    _context = context;
     final double statusBarHeight = MediaQuery
         .of(context)
         .padding
         .top;
 
     return Scaffold(
-      key: scaffoldKey,
+      resizeToAvoidBottomInset : false,
+      //key: scaffoldKey,
       backgroundColor: Colors.amberAccent,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-
-            /// 상단 여백 (상태바)
-            Container(
-                child: Padding(padding: EdgeInsets.only(top: statusBarHeight))
-            ),
-
-            /// 공지 및 광고 배너
-            /*
-            Container(
-              margin: EdgeInsets.only(bottom: 20.0),
-
-              /// 구글 애드센스
-              /// https://ssscool.tistory.com/384
-              AdmobBanner(
-                adUnitId: getBannerAdUnitId(),
-                adSize: bannerSize,
-                listener:
-                    (AdmobAdEvent event, Map<String, dynamic> args) {
-                  handleEvent(event, args, 'Banner');
-                },
-              ),
-            ),
-            */
-            Center(
-              child: _widgetOptions.elementAt(_selectedIndex),
-            ),
-          ],
+      body: Center(
+              child: _pages[_selectedIndex],
         ),
-      ),
 
 
       /// 하단
@@ -63,15 +40,15 @@ class _MainPageState extends State<MainPage> {
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.amber,
         //Bar의 배경색
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
         //선택된 아이템의 색상
-        unselectedItemColor: Colors.white.withOpacity(.60),
+        unselectedItemColor: Colors.black.withOpacity(.60),
         //선택 안된 아이템의 색상
-        selectedFontSize: 14,
+        selectedFontSize: 11,
         //선택된 아이템의 폰트사이즈
-        unselectedFontSize: 14,
+        unselectedFontSize: 10,
         //선택 안된 아이템의 폰트사이즈
         currentIndex: _selectedIndex,
         //현재 선택된 Index
@@ -82,21 +59,21 @@ class _MainPageState extends State<MainPage> {
             _selectedIndex = index; //index는 처음 아이템 부터 0, 1, 2, 3
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            title: Text('Home'),
+            label: "Home",
             icon: Icon(Icons.home_outlined),
           ),
           BottomNavigationBarItem(
-            title: Text('Search'),
-            icon: Icon(Icons.search_outlined),
+            label: "Menu",
+            icon: Icon(Icons.menu_outlined),
           ),
           BottomNavigationBarItem(
-            title: Text('Add'),
-            icon: Icon(Icons.add_outlined),
+            label: "Chat",
+            icon: Icon(Icons.message_outlined),
           ),
           BottomNavigationBarItem(
-            title: Text('Profile'),
+            label: "MyPage",
             icon: Icon(Icons.account_box_outlined),
           ),
         ],
@@ -104,20 +81,15 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  List _widgetOptions = [
-    Text(
-      'Favorites',
-      style: TextStyle(fontSize: 30,),
-    ),
-    Text(
-      'Music',
-      style: TextStyle(fontSize: 30,),
-    ),
-    Text(
+  /// https://fre2-dom.tistory.com/243
+  final List _pages = [
+    const Home(),
+    const LoginScreen(),
+    const Text(
       'Places',
       style: TextStyle(fontSize: 30,),
     ),
-    Text(
+    const Text(
       'News',
       style: TextStyle(fontSize: 30,),
     ),

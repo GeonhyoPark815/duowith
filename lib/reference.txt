@@ -28,3 +28,29 @@ https://blog.cracker9.io/2018/03/13/Android_DPI/
 
 - LP in Flutter
 https://points.tistory.com/66
+
+- Landing Page
+https://100sucoding.tistory.com/20
+
+- RGB Code
+https://www.rapidtables.org/ko/web/color/RGB_Color.html
+
+- Flutter Listview
+https://www.youtube.com/watch?v=J61zERYY7k4
+
+- Material Design by Google
+https://material.io/components?platform=flutter
+
+- Material Design Guide
+http://uxstory.co.kr/blog/2018/08/28/material-design-appbar-top/
+
+- Flutter Theme
+https://eory96study.tistory.com/11
+
+- BottomNavigatorBar
+https://fre2-dom.tistory.com/243
+
+- Flutter Favorite
+https://padro.tistory.com/173
+
+

@@ -5,7 +5,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:small_talk/screens/login/home.dart';
+import 'package:small_talk/screens/login/loginCheck.dart';
 
 class ForFirebase extends StatelessWidget {
   const ForFirebase({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class ForFirebase extends StatelessWidget {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return Home();
+          return LoginCheck();
         }
         return CircularProgressIndicator();
       },
