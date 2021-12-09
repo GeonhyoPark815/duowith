@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../forFirebase.dart';
-import 'mainPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,12 +17,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState();Timer(
-      Duration(seconds: 4),
+    super.initState();
+    Timer(
+      Duration(seconds: 2),
       () => Navigator.push(
         context,
         // 원래는 로그인 화면을 위한 ForFireBase()로 이동
-        MaterialPageRoute(builder: (context) => MainPage()),
+        MaterialPageRoute(builder: (context) => ForFirebase()),
       ),
     );
   }
@@ -34,11 +34,24 @@ class _SplashScreenState extends State<SplashScreen> {
     double height = MediaQuery.of(context).size.height;
 
     return Container(
+      color: Colors.deepOrange,
+      alignment: Alignment.center,
+      child: Text(
+        "듀오\n구함",
+        style: TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.w600,
+          color: Colors.white
+        ),
+      ),
+      /*
       decoration: BoxDecoration(
         image: DecorationImage(
           /// Splash Screen을 구성할 이미지를 저장해주세요.
             image: AssetImage('images/splash.jpg'), fit: BoxFit.cover),
       ),
+
+       */
     );
   }
 }

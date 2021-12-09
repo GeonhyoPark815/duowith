@@ -2,8 +2,8 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-import '../database/db.dart';
-import '../database/post.dart'; // for the utf8.encode method
+import '../database/posts.dart';
+import '../postObject.dart'; // for the utf8.encode method
 
 class WritePage extends StatefulWidget {
   WritePage({Key? key, required this.id}) : super(key: key);

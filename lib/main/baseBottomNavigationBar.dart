@@ -1,18 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'package:small_talk/database/post.dart';
+import 'package:small_talk/myPage/screens/myPage.dart';
+import 'package:small_talk/authentication/screens/logout.dart';
+import 'package:small_talk/main/screens/mainPage.dart';
+import '../forum/screens/forumPage.dart';
+import '../authentication/screens/loginPage.dart';
 
-import 'login/loginScreen.dart';
-
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class BaseBottomNavigationBar extends StatefulWidget {
+  const BaseBottomNavigationBar({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _BaseBottomNavigationBarState createState() => _BaseBottomNavigationBarState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _BaseBottomNavigationBarState extends State<BaseBottomNavigationBar> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
   late BuildContext _context;
@@ -28,19 +30,17 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       resizeToAvoidBottomInset : false,
       //key: scaffoldKey,
-      backgroundColor: Colors.amberAccent,
-      body: Center(
-              child: _pages[_selectedIndex],
-        ),
-
+      backgroundColor: Colors.grey,
+      body:Center(
+        child: _pages[_selectedIndex],
+      ),
 
       /// 하단
       /// https://material.io/components/bottom-navigation/flutter#theming-a-bottom-nav-bar
       /// https://security-nanglam.tistory.com/484
-
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.white70,
         //Bar의 배경색
         selectedItemColor: Colors.black,
         //선택된 아이템의 색상
@@ -83,15 +83,14 @@ class _MainPageState extends State<MainPage> {
 
   /// https://fre2-dom.tistory.com/243
   final List _pages = [
-    const Home(),
-    const LoginScreen(),
-    const Text(
-      'Places',
-      style: TextStyle(fontSize: 30,),
+    /// 소식 및 광고 페이지
+    const MainPage(),
+    /// 게시판 페이지
+    const ForumPage(),
+    Container(
+      child: Text("듀오 검색 or 전적검색 링크"),
     ),
-    const Text(
-      'News',
-      style: TextStyle(fontSize: 30,),
-    ),
+    /// 마이페이지
+    const MyPage()
   ];
 }

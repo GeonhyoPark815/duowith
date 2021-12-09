@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../database/db.dart';
-import '../database/post.dart';
+import '../database/posts.dart';
+import '../postObject.dart';
 
-class ViewPage extends StatefulWidget {
-  ViewPage({Key? key, required this.id}) : super(key: key);
+class PostPage extends StatefulWidget {
+  PostPage({Key? key, required this.id}) : super(key: key);
   final String id;
 
   @override
-  _ViewPageState createState() => _ViewPageState();
+  _PostPageState createState() => _PostPageState();
 }
 
-class _ViewPageState extends State<ViewPage> {
+class _PostPageState extends State<PostPage> {
   late BuildContext _context;
   @override
   Widget build(BuildContext context) {

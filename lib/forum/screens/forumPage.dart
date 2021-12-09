@@ -1,26 +1,32 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:small_talk/database/post.dart';
-import 'package:small_talk/screens/view.dart';
-import 'package:small_talk/screens/write.dart';
+import 'package:small_talk/forum/postObject.dart';
+import 'package:small_talk/forum/screens/postPage.dart';
+import 'package:small_talk/forum/screens/writePage.dart';
 
-import '../database/db.dart';
+import '../database/posts.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class ForumPage extends StatefulWidget {
+  const ForumPage({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _ForumPageState createState() => _ForumPageState();
 }
 
-class _HomeState extends State<Home> {
+class _ForumPageState extends State<ForumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       /// https://otrodevym.tistory.com/entry/flutter-06-AppBar에-메뉴-아이콘-추가하기
       appBar: AppBar(
-        title: const Text("SmallTalk"),
-        backgroundColor: Colors.amber,
+        title: const Text(
+            "듀오 게시판",
+        style: TextStyle(
+          fontSize: 15
+        )
+          ),
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.search_outlined),
@@ -83,7 +89,7 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                     parentContext,
                     CupertinoPageRoute(
-                        builder: (context) => ViewPage(id: post.id,)));
+                        builder: (context) => PostPage(id: post.id,)));
               },
               child: Container(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),

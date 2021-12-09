@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../mainPage.dart';
-import 'loginScreen.dart';
+import '../main/baseBottomNavigationBar.dart';
+import 'screens/loginPage.dart';
 
 class LoginCheck extends StatelessWidget {
   const LoginCheck({Key? key}) : super(key: key);
@@ -15,10 +15,10 @@ class LoginCheck extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.data == null) {
-            return LoginScreen();
+            return LoginPage();
           }
           else {
-            return MainPage();
+            return BaseBottomNavigationBar();
           }
         },
       ),

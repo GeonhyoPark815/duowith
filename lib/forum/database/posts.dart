@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:small_talk/database/post.dart';
+import 'package:small_talk/forum/postObject.dart';
 
 const String tableName = 'posts';
 

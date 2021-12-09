@@ -5,7 +5,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:small_talk/screens/login/loginCheck.dart';
+import 'package:small_talk/authentication/loginCheck.dart';
+import 'package:small_talk/main/screens/splashScreen.dart';
 
 class ForFirebase extends StatelessWidget {
   const ForFirebase({Key? key}) : super(key: key);
@@ -15,15 +16,17 @@ class ForFirebase extends StatelessWidget {
     return FutureBuilder(
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
-        if (snapshot.hasError) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return SplashScreen();
+        }
+        else if (snapshot.hasError) {
           return Center(
-            child: Text("firebase load fail"),
+            child: Text("어플을 다시 실행해주세요."),
           );
         }
-        if (snapshot.connectionState == ConnectionState.done) {
+        else {
           return LoginCheck();
         }
-        return CircularProgressIndicator();
       },
     );
   }

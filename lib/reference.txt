@@ -53,4 +53,5 @@ https://fre2-dom.tistory.com/243
 - Flutter Favorite
 https://padro.tistory.com/173
 
-
+- InApp Browser
+https://pub.dev/packages/url_launcher/install
