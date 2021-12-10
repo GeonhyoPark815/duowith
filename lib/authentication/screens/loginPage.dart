@@ -8,7 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:small_talk/main/baseBottomNavigationBar.dart';
 import 'package:small_talk/authentication/screens/resetPassword.dart';
 import 'package:small_talk/authentication/screens/signupPage.dart';
-import '../database/account.dart';
+import '../database/accountProvider.dart';
 import 'emailNonVerified.dart';
 
 

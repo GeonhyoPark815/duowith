@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:small_talk/authentication/screens/loginPage.dart';
 
-import '../database/account.dart';
+import '../database/accountProvider.dart';
 
 class EmailNonVerified extends StatefulWidget {
   const EmailNonVerified({Key? key}) : super(key: key);

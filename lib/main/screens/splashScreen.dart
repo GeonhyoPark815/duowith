@@ -4,8 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../forFirebase.dart';
+import '../main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,11 +18,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 2),
+      Duration(seconds: 1),
       () => Navigator.push(
         context,
         // 원래는 로그인 화면을 위한 ForFireBase()로 이동
-        MaterialPageRoute(builder: (context) => ForFirebase()),
+        MaterialPageRoute(builder: (context) => MyApp()),
       ),
     );
   }

@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:small_talk/authentication/database/account.dart';
+import 'package:small_talk/authentication/database/accountProvider.dart';
+import '../authentication/loginCheck.dart';
 import 'screens/splashScreen.dart';
 
 void main() async{
@@ -18,7 +20,6 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -43,14 +44,15 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: HomePage(),
+        home: FutureBuilder(
+          future: Firebase.initializeApp(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return LoginCheck();
+            }
+            return SplashScreen();
+          },
+        ),
       );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const SplashScreen();
   }
 }

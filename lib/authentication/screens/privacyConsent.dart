@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../database/account.dart';
+import '../database/accountProvider.dart';
 import 'loginPage.dart';
 
 class PrivacyConsentPage extends StatefulWidget {

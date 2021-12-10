@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../database/account.dart';
+import '../database/accountProvider.dart';
 
 class Logout extends StatelessWidget {
   const Logout({Key? key}) : super(key: key);
